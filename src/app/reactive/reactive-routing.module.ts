@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BasicPageComponent } from './pages/basic-page/basic-page.component';
+import { DynamicPageComponent } from './pages/dynamic-page/dynamic-page.component';
+import { SwitcesPageComponent } from './pages/switces-page/switces-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: 'basic', component: BasicPageComponent },
+      { path: 'dynamic', component: DynamicPageComponent },
+      { path: 'switches', component: SwitcesPageComponent },
+      { path: '**', redirectTo: 'basic' },
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
